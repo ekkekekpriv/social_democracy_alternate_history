@@ -10,11 +10,11 @@ go-to: start_menu_2
 
 @start_menu_2
 
-- @start: Start game
+- @start: Start game (Weimar 1928)
+- @start_french_revolution: Start French Revolution (1793)
 - @election_simulation: Election simulation
 - @credits: Credits
 - @game_over.achievements
-
 
 @start
 on-arrival: {!
@@ -632,3 +632,58 @@ It is a bright time for German democracy. After a period of struggle, inflation 
 Now, the task of Social Democracy is to prepare for the next election. The bourgeois-right government of Wilhelm Marx is unpopular, and we stand to gain. Perhaps the next government will have a socialist majority.
 
 
+@start_french_revolution
+on-arrival: {!
+Q.started = 1;
+Q.time = 1;
+Q.year = 1793;
+Q.month = 2; // February 1793, shortly after the King's execution
+Q.month_actions = 0;
+
+Q.difficulty = 0;
+
+// --- Factions in the National Convention ---
+// The Montagnards (Jacobins), Girondins, the Plain (The Marsh), and the Enragés (radical sans-culottes)
+Q.montagnard_strength = 35;
+Q.girondin_strength = 30;
+Q.plain_strength = 35; 
+Q.enrage_strength = 15; 
+
+// --- Key Leaders' Influence ---
+Q.robespierre_influence = 20;
+Q.danton_influence = 20;
+Q.marat_influence = 15;
+Q.saint_just_influence = 10;
+
+// --- State of the Nation ---
+Q.war_effort = 40; // The First Coalition is forming
+Q.vendee_unrest = 10; // Will spike in March 1793
+Q.assignat_inflation = 30; // Severe economic crisis
+Q.public_order = 50;
+Q.sans_culottes_militancy = 20;
+
+// --- The Terror & Committee ---
+Q.reign_of_terror_progress = 0; // 0 to 100
+Q.committee_power = 10; // Power of the Committee of Public Safety
+Q.suspicion_level = 0; // How paranoid the government is
+
+// --- Relations ---
+Q.girondin_relation = 40; // Very tense
+Q.sans_culottes_relation = 60;
+Q.army_loyalty = 50;
+!}
+go-to: 1793_main
+
+@1793_main
+new-page: true
+title: The Shadow of the King
+
+= February 1793
+
+The King is dead. Louis Capet was executed a few weeks ago, and his blood has barely dried on the Place de la Révolution. 
+France is now a Republic, but we are surrounded by enemies. The monarchs of Europe have formed the First Coalition to crush our revolution. Within our own borders, the Girondins whisper that we Montagnards are pushing the country into anarchy with our radicalism. Meanwhile, the *sans-culottes* demand bread and blood.
+
+
+- @deal_with_girondins: Focus on purging the Girondin influence in the Convention.
+- @war_effort_scene: Focus on organizing the armies against the First Coalition.
+- @sans_culottes_scene: Go to the sections of Paris and rally the sans-culottes.
