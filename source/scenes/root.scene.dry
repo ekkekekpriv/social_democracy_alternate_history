@@ -687,3 +687,121 @@ France is now a Republic, but we are surrounded by enemies. The monarchs of Euro
 - @deal_with_girondins: Focus on purging the Girondin influence in the Convention.
 - @war_effort_scene: Focus on organizing the armies against the First Coalition.
 - @sans_culottes_scene: Go to the sections of Paris and rally the sans-culottes.
+
+
+
+// ==========================================
+// SPOKE 1: The Political Struggle
+// ==========================================
+@deal_with_girondins
+title: The Girondin Threat
+The Girondins, led by Brissot and Vergniaud, are using their influence in the provinces to paint us as dictators. They blame the September Massacres on us and demand a crackdown on Paris. If we do not act, they will roll back the Revolution.
+
+- @robespierre_speech: Have Robespierre deliver a crushing speech in the Convention.
+- @petitions_paris: Use the Paris sections to flood the Convention with petitions.
+- @danton_compromise: Try to negotiate a truce with Danton's moderate approach.
+
+@robespierre_speech
+on-arrival: {!
+Q.girondin_strength -= 10;
+Q.montagnard_strength += 10;
+Q.reign_of_terror_progress += 5;
+!}
+Robespierre takes the rostrum. His voice rings out, cold and precise. "The goal of the constitutional government is to preserve the Republic; the goal of the revolutionary government is to found it." He exposes their hypocrisy and demands ideological purity. The Plain is swayed by his logic, but his harsh words alarm the moderates.
+- @1793_hub: Return to the Convention.
+
+@petitions_paris
+on-arrival: {!
+Q.sans_culottes_militancy += 10;
+Q.girondin_strength -= 5;
+Q.public_order -= 5;
+!}
+You organize a massive petition drive. Thousands of armed sans-culottes march on the Convention, demanding the expulsion of the "appellants." The deputies are terrified, but the Plain is also deeply alarmed by the mob's power. You weakened the Girondins, but you scared the moderates.
+- @1793_hub: Return to the Convention.
+
+@danton_compromise
+on-arrival: {!
+Q.girondin_strength += 5;
+Q.danton_influence += 10;
+Q.sans_culottes_militancy -= 5;
+!}
+Danton argues for unity. "We must not shed the blood of patriots." You reach a temporary truce, but the Girondins use this breathing room to consolidate their power in the provinces. The radicals in Paris are furious at your leniency.
+- @1793_hub: Return to the Convention.
+
+// ==========================================
+// SPOKE 2: The Military Crisis
+// ==========================================
+@war_effort_scene
+title: The First Coalition
+The armies are in disarray. General Dumouriez has suffered a defeat at Neerwinden and is looking increasingly suspicious. The aristocratic officers are defecting, and the troops are starving. The borders are open.
+
+- @send_reps: Send Représentants en mission to the front lines.
+- @purge_officers: Purge the aristocratic officers immediately.
+- @levee_masse: Begin drafting the Levée en masse early.
+
+@send_reps
+on-arrival: {!
+Q.army_loyalty += 10;
+Q.committee_power += 10;
+Q.war_effort += 10;
+!}
+You dispatch loyal Montagnards to the armies with sweeping powers. They enforce discipline, promote meritocratic generals, and root out treason. The army begins to stabilize, and the Committee of Public Safety's grip on the military tightens.
+- @1793_hub: Return to the Convention.
+
+@purge_officers
+on-arrival: {!
+Q.army_loyalty -= 10;
+Q.war_effort -= 5;
+Q.reign_of_terror_progress += 10;
+!}
+You order the immediate arrest of any officer with a noble title. The resulting chaos paralyzes the command structure as experienced leaders are dragged to Paris. However, it satisfies the radical demand for ideological purity in the ranks.
+- @1793_hub: Return to the Convention.
+
+@levee_masse
+on-arrival: {!
+Q.war_effort += 20;
+Q.public_order -= 10;
+Q.sans_culottes_militancy += 10;
+!}
+"From now until the moment when enemies shall have been driven from the soil of the Republic, all Frenchmen are in permanent requisition for army service!" The massive conscription angers the peasantry, but it will give us the sheer numbers needed to overwhelm the Coalition.
+- @1793_hub: Return to the Convention.
+
+// ==========================================
+// SPOKE 3: The Economic Crisis
+// ==========================================
+@sans_culottes_scene
+title: The Demands of the Sections
+In the working-class sections of Paris, the Enragés, led by Jacques Roux, are agitating. The assignat is worthless, and bread is scarce. They demand the death penalty for hoarders and strict price controls.
+
+- @support_enrages: Support the Enragés and implement the Law of the Maximum.
+- @free_market: Defend free trade and property rights to keep the bourgeoisie happy.
+- @requisitions: Order targeted requisitions of grain without full price controls.
+
+@support_enrages
+on-arrival: {!
+Q.sans_culottes_relation += 20;
+Q.enrage_strength += 15;
+Q.assignat_inflation -= 10;
+Q.public_order -= 10;
+!}
+You throw the weight of the Committee behind the Enragés. The Law of the General Maximum is enacted. Hoarders are executed. The sans-culottes cheer, but the merchants and middle classes are terrified of your radical economic policies.
+- @1793_hub: Return to the Convention.
+
+@free_market
+on-arrival: {!
+Q.sans_culottes_relation -= 20;
+Q.enrage_strength -= 10;
+Q.assignat_inflation += 15;
+Q.public_order += 5;
+!}
+You argue that price controls will destroy the economy. The bourgeoisie applauds your defense of property, but in the streets, the sans-culottes burn you in effigy. "You are leaving the poor to starve!" they cry.
+- @1793_hub: Return to the Convention.
+
+@requisitions
+on-arrival: {!
+Q.sans_culottes_relation += 5;
+Q.assignat_inflation -= 5;
+Q.public_order -= 5;
+!}
+You order the army to seize grain from wealthy farmers to feed Paris. It is a pragmatic middle ground. The sans-culottes get bread, but the peasants are beginning to deeply resent the cities. (This might have consequences in the Vendée...)
+- @1793_hub: Return to the Convention.
